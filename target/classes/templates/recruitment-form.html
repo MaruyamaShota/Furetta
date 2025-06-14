@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>募集を作成 - Furetta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --dark-color: #2d3436;
+            --light-color: #f5f6fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-color);
+        }
+
+        .navbar {
+            background-color: var(--dark-color);
+            padding: 1rem 2rem;
+        }
+
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- ナビゲーションバー -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">Furetta</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="form-container">
+            <h2 class="mb-4">募集を作成</h2>
+            <form action="/recruitment/new" method="post">
+                <div class="mb-3">
+                    <label for="gameName" class="form-label">ゲーム名</label>
+                    <select class="form-select" id="gameName" name="gameName" required>
+                        <option value="">選択してください</option>
+                        <option value="APEX LEGENDS">APEX LEGENDS</option>
+                        <option value="VALORANT">VALORANT</option>
+                        <option value="League of Legends">League of Legends</option>
+                        <option value="Fortnite">Fortnite</option>
+                        <option value="PUBG">PUBG</option>
+                        <option value="Overwatch 2">Overwatch 2</option>
+                        <option value="Rainbow Six Siege">Rainbow Six Siege</option>
+                        <option value="Minecraft">Minecraft</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="requiredPlayers" class="form-label">募集人数</label>
+                    <input type="number" class="form-control" id="requiredPlayers" name="requiredPlayers" min="1" max="10" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">プレイ時間</label>
+                    <div class="row">
+                        <div class="col">
+                            <label for="startTime" class="form-label">開始時間</label>
+                            <select class="form-select" id="startTime" name="startTime" required>
+                                <option value="">選択してください</option>
+                                <option value="00:00">00:00</option>
+                                <option value="01:00">01:00</option>
+                                <option value="02:00">02:00</option>
+                                <option value="03:00">03:00</option>
+                                <option value="04:00">04:00</option>
+                                <option value="05:00">05:00</option>
+                                <option value="06:00">06:00</option>
+                                <option value="07:00">07:00</option>
+                                <option value="08:00">08:00</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="19:00">19:00</option>
+                                <option value="20:00">20:00</option>
+                                <option value="21:00">21:00</option>
+                                <option value="22:00">22:00</option>
+                                <option value="23:00">23:00</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="endTime" class="form-label">終了時間</label>
+                            <select class="form-select" id="endTime" name="endTime" required>
+                                <option value="">選択してください</option>
+                                <option value="00:00">00:00</option>
+                                <option value="01:00">01:00</option>
+                                <option value="02:00">02:00</option>
+                                <option value="03:00">03:00</option>
+                                <option value="04:00">04:00</option>
+                                <option value="05:00">05:00</option>
+                                <option value="06:00">06:00</option>
+                                <option value="07:00">07:00</option>
+                                <option value="08:00">08:00</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="19:00">19:00</option>
+                                <option value="20:00">20:00</option>
+                                <option value="21:00">21:00</option>
+                                <option value="22:00">22:00</option>
+                                <option value="23:00">23:00</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="platform" class="form-label">プラットフォーム</label>
+                    <select class="form-select" id="platform" name="platform" required>
+                        <option value="">選択してください</option>
+                        <option value="PC">PC</option>
+                        <option value="PlayStation">PlayStation</option>
+                        <option value="Xbox">Xbox</option>
+                        <option value="Nintendo Switch">Nintendo Switch</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">VC</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="vcRequired" id="vcRequired" value="true" required>
+                        <label class="form-check-label" for="vcRequired">必須</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="vcRequired" id="vcOptional" value="false">
+                        <label class="form-check-label" for="vcOptional">任意</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="vcRequired" id="vcNone" value="null">
+                        <label class="form-check-label" for="vcNone">なし</label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">募集内容</label>
+                    <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary">募集を投稿</button>
+                    <a href="/" class="btn btn-outline-secondary">キャンセル</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
